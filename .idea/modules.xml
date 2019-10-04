@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/hw01-maven/hw01-maven.iml" filepath="$PROJECT_DIR$/hw01-maven/hw01-maven.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/java-otus.iml" filepath="$PROJECT_DIR$/.idea/java-otus.iml" />
-    </modules>
-  </component>
-</project>
