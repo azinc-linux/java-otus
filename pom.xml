@@ -8,7 +8,13 @@
 
     <groupId>otus</groupId>
     <artifactId>java-otus</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2019-09-SNAPSHOT</version>
+
+    <modules>
+        <module>hw01-maven</module>
+    </modules>
+
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -16,13 +22,28 @@
             <version>28.1-jre</version>
         </dependency>
     </dependencies>
+    </dependencyManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
-        <com.google.guava.version>28.1-jre</com.google.guava.version>
-        <my.variable>42</my.variable>
     </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <configuration>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
 
 </project>
