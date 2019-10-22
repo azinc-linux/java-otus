@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hw02-arraylist</artifactId> 
+    <artifactId>hw02-arraylist</artifactId>
 
     <name>hw02-arraylist</name>
 
@@ -27,7 +27,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>diyarraylist.DIYarrayList</mainClass>
+                            <mainClass>diyarraylist.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

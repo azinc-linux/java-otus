@@ -14,7 +14,7 @@ public class DIYarrayList<T> implements List<T> {
     public DIYarrayList(int cap) {
         if(cap < 0)
             throw new IllegalArgumentException("Wrong parameter: "+cap);
-        this.myarray = new Object[cap];
+        myarray = new Object[cap];
     }
 
     public DIYarrayList(Collection<T> c){
@@ -25,12 +25,12 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public int size() {
-        return this.size;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return (this.size == 0);
+        return (size == 0);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class DIYarrayList<T> implements List<T> {
         if(o == null)
             return false;
 
-        for(int i =0; i<=this.size; i++)
+        for(int i =0; i<=size; i++)
         {
             if(myarray[i].equals(o))
                 return true;
@@ -66,14 +66,14 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        if(this.size == this.cap) {
-            this.cap = 2*this.size;
-            Object[] temparray = new Object[this.cap];
+        if(size == cap) {
+            cap = 2*size;
+            Object[] temparray = new Object[cap];
             System.arraycopy(myarray,0,temparray,0,myarray.length);
             myarray = temparray;
         }
-        myarray[this.size] = t;
-        this.size++;
+        myarray[size] = t;
+        size++;
 
         return true;
     }
@@ -121,15 +121,15 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public void clear() {
-        for(int i =0; i<=this.size; i++)
+        for(int i =0; i<=size; i++)
             myarray[i]=null;
-        this.size=0;
+        size=0;
     }
 
     @Override
     public T get(int index) {
-        if(index < 0 || index >= this.size)
-            throw new ArrayIndexOutOfBoundsException("index must be greater 0 and lesser "+index+" "+this.size);
+        if(index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("index must be greater 0 and lesser "+index+" "+size);
         return (T)myarray[index];
     }
 
@@ -149,14 +149,20 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        if (index <0 || index > this.size)
+        Object[] innerarray = new Object[--size];
+        if (index <0 || index > size)
             throw new IllegalArgumentException();
         T item = (T)myarray[index];
         myarray[index]=null;
-        for(int i=index; i<this.size-1; i++)
+        for(int i=0,j=0; i<size; i++) {
+            if (myarray[i] != null) {
+                innerarray[j++] = myarray[i];
+            }
+        }
+        myarray=innerarray;
+        /*for(int i=index; i<size-1; i++)
             myarray[i]=myarray[i+1];
-        myarray[this.size-1] = null;
-        this.size--;
+        myarray[size-1] = null;*/
         return item;
     }
 
@@ -164,7 +170,7 @@ public class DIYarrayList<T> implements List<T> {
     public int indexOf(Object o) {
         if(o == null)
             throw new IllegalArgumentException();
-        for(int i=0; i<=this.size; i++) {
+        for(int i=0; i<=size; i++) {
             if (myarray[i].equals(o))
                 return i;
         }
@@ -208,19 +214,19 @@ public class DIYarrayList<T> implements List<T> {
 
         @Override
         public boolean hasNext() {
-            return !this.arraylist.isEmpty() && ((this.arraylist.size() -1) > this.index);
+            return !arraylist.isEmpty() && ((arraylist.size() -1) > index);
         }
 
         @Override
         public T next() {
             if(!this.hasNext())
                 throw new NoSuchElementException();
-            return (T)arraylist.get(++this.index);
+            return (T)arraylist.get(++index);
         }
 
         @Override
         public boolean hasPrevious() {
-            return !this.arraylist.isEmpty() && this.index > 0;
+            return !arraylist.isEmpty() && index > 0;
         }
 
         @Override
@@ -228,17 +234,17 @@ public class DIYarrayList<T> implements List<T> {
             if(!this.hasPrevious())
                 throw new NoSuchElementException();
 
-            return (T)this.arraylist.get(--this.index);
+            return (T)arraylist.get(--index);
         }
 
         @Override
         public int nextIndex() {
-            return ++this.index;
+            return ++index;
         }
 
         @Override
         public int previousIndex() {
-            return --this.index;
+            return --index;
         }
 
         @Override
@@ -248,8 +254,8 @@ public class DIYarrayList<T> implements List<T> {
 
         @Override
         public void set(T t) {
-            if (this.index > 0 && this.index < arraylist.size())
-                this.arraylist.set(this.index,t);
+            if (index > 0 && index < arraylist.size())
+                arraylist.set(index,t);
         }
 
         @Override
@@ -259,40 +265,6 @@ public class DIYarrayList<T> implements List<T> {
     }
 
 
-    public static void main(String[] args){
 
-        DIYarrayList<Integer> listint = new DIYarrayList<>();
-        DIYarrayList<Integer> listint2 = new DIYarrayList<>();
-        Integer[] elements1 = new Integer[100];
-        Integer[] elements2 = new Integer[100];
-
-        for (int i=0; i<100; i++) {
-            elements1[i] = i;
-            elements2[i]= i+100;
-        }
-
-        System.out.println("test addAll");
-        System.out.println("listint's size before add: "+listint.size());
-        Collections.addAll(listint, elements1);
-        System.out.println("listint's size after add: "+listint.size()) ;
-        Collections.addAll(listint2, elements2);
-        System.out.println("test copy");
-        Collections.copy(listint, listint2);
-        for(Integer j : listint)
-            System.out.println(j);
-
-
-        System.out.println("test sorting id descent");
-        Collections.sort(listint,new Comparator<Integer>(){
-            public int compare(Integer e, Integer e1)
-            {
-                return e > e1 ? -1 : (e == e1 ? 0 : 1);
-            }
-        });
-
-        for ( Integer j : listint)
-            System.out.println(j);
-
-    }
 }
 
