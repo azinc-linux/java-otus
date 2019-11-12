@@ -1,13 +1,5 @@
 Статистика по трем сборщикам мусора CMS, G1, ParallelGC
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-
-
-
 Out of loop with OOM exception
 
  ParNew
@@ -39,9 +31,12 @@ ConcurrentMarkSweep
 
 
 Out of loop with OOM exception
-|-------------------------------------------|
-| G1 Young Generation                       |
+
+
+ G1 Young Generation   
+ 
 | # min | gc call count | gc duration in ms |
+|-------|:-------------:|------------------:|
 |     0 |             3 |               130 |
 |     1 |             2 |               157 |
 |     2 |             1 |               108 |
@@ -54,31 +49,38 @@ Out of loop with OOM exception
 |     9 |             5 |               313 |
 |    10 |            12 |               176 |
 |    11 |            10 |                 8 |
-|-------------------------------------------|
-| G1 Old Generation                         |
+
+
+ G1 Old Generation                         
+ 
 | # min | gc call count | gc duration in ms |
+|-------|:-------------:|------------------:|
 |     9 |             1 |               723 |
 |    10 |            10 |              7480 |
 |    11 |            19 |             14926 |
-|-------------------------------------------|
+
 
 Out of loop with OOM exception
 
-| PS MarkSweep                              |
+ PS MarkSweep                              
+ 
 | # min | gc call count | gc duration in ms |
+|-------|:-------------:|-----------------: |
 |     6 |             1 |              1774 |
 |     8 |             1 |               899 |
 |     9 |             2 |              2094 |
 |    10 |            46 |             54532 |
 |    11 |             7 |              8419 |
-|-------------------------------------------|
-| PS Scavenge                               |
+
+ PS Scavenge                               
+ 
 | # min | gc call count | gc duration in ms |
+|-------|:-------------:|-----------------: |
 |     1 |             1 |               126 |
 |     2 |             1 |               192 |
 |     4 |             1 |               191 |
 |     6 |             1 |               186 |
-|-------------------------------------------|
+
 
 На базе собранных статистических данных можно сделать вывод, 
 что наибольшее время живучести показал сборщик CMS, 
