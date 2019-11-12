@@ -9,8 +9,9 @@
 
 
 Out of loop with OOM exception
-|-------------------------------------------|
-| ParNew                                    |
+
+ ParNew
+ 
 | # min | gc call count | gc duration in ms |
 |-------|:-------------:|------------------:|
 |     1 |             1 |               751 |
@@ -18,9 +19,12 @@ Out of loop with OOM exception
 |     6 |             1 |               334 |
 |     8 |             1 |                 0 |
 |    10 |             3 |                 0 |
-|------- -------------: ------------------:|
-| ConcurrentMarkSweep                       |
+
+
+ConcurrentMarkSweep                       
+
 | # min | gc call count | gc duration in ms |
+|-------|:-------------:|------------------:|
 |     3 |             1 |              5427 |
 |     4 |             8 |             42003 |
 |     5 |             9 |             47800 |
@@ -31,7 +35,7 @@ Out of loop with OOM exception
 |    10 |            36 |             32510 |
 |    11 |            56 |             59564 |
 |    12 |             7 |              7150 |
-|-------------------------------------------|
+
 
 
 Out of loop with OOM exception
