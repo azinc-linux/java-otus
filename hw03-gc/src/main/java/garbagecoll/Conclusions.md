@@ -4,6 +4,7 @@ Out of loop with OOM exception
 |-------------------------------------------|
 | ParNew                                    |
 | # min | gc call count | gc duration in ms |
+|_ _ _ _|_ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _|
 |     1 |             1 |               751 |
 |     3 |             1 |               251 |
 |     6 |             1 |               334 |
